@@ -1,0 +1,46 @@
+.wrapper {
+  max-width: 1079px;
+  margin: 15px auto;
+
+  thead > tr > th {
+    padding: 19px 0 16px 23px;
+    font-family: Roboto;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 137.687%;
+    background-color: #474955;
+    color: #ffffff;
+  }
+  .id {
+    min-width: 110px;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 19px 22px 16px 23px;
+  }
+  .titleHeader {
+    min-width: 529px;
+    padding-left: 125px;
+    button {
+      padding-left: 34px;
+    }
+  }
+  .description {
+    min-width: 432px;
+    padding-left: 121px;
+    button {
+      padding-left: 25px;
+    }
+  }
+  .body > td {
+    vertical-align: middle;
+    color: #474955;
+    font-family: Roboto;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 137.687%;
+    padding: 11px;
+  }
+}
