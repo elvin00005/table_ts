@@ -1,30 +1,20 @@
-import { useState } from "react";
 import { Posts } from "../../store/postsSlice";
 import styles from "./Filter.module.scss";
 
 interface FilterProps {
   posts: Posts[];
-  onFilter: (filteredPosts: Posts[]) => void;
+  onFilter: (_: string) => void;
+  searchValue: string;
 }
 
-const Filter = ({ posts, onFilter }: FilterProps) => {
-  const [searchValue, setSearchValue] = useState<string>("");
-
-  const handleFilter = (searchValue: string) => {
-    setSearchValue(searchValue);
-    const filteredPosts = posts.filter((post) =>
-      post.title.toLowerCase().includes(searchValue.toLowerCase())
-    );
-    onFilter(filteredPosts);
-  };
-
+const Filter = ({ onFilter, searchValue }: FilterProps) => {
   return (
     <div className={styles.wrapper}>
       <input
         type="text"
         placeholder="Поиск"
         value={searchValue}
-        onChange={(e) => handleFilter(e.target.value)}
+        onChange={(e) => onFilter(e.target.value)}
       />
       <svg
         xmlns="http://www.w3.org/2000/svg"

@@ -5,6 +5,7 @@ export interface Posts {
   id: number;
   title: string;
   body: string;
+  [key: string]: any;
 }
 export interface InitialState {
   posts: Posts[] | [];
@@ -17,16 +18,24 @@ export const getAllPosts = createAsyncThunk("posts/getAllPosts", async () => {
   return data;
 });
 
-const initialState: Posts[] = [];
+const initialState: { posts: Posts[]; loading: boolean } = {
+  posts: [],
+  loading: false,
+};
 
 export const postsSlice = createSlice({
   name: "posts",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(getAllPosts.fulfilled, (state, action) => {
-      return action.payload;
-    });
+    builder
+      .addCase(getAllPosts.fulfilled, (state, action) => {
+        state.loading = false;
+        state.posts = action.payload;
+      })
+      .addCase(getAllPosts.pending, (state) => {
+        state.loading = true;
+      });
   },
 });
 

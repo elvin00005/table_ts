@@ -1,8 +1,12 @@
 import React from "react";
 
-const ArrowImg = () => {
+interface ArrowImgProps {
+  onClick(): void;
+}
+
+const ArrowImg = ({ onClick }: ArrowImgProps) => {
   return (
-    <button className="d-inline bg-transparent border-0">
+    <button className="d-inline bg-transparent border-0" onClick={onClick}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="12"
