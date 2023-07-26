@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-export interface Posts {
+export interface Post {
   userId?: number;
   id: number;
   title: string;
@@ -8,7 +8,7 @@ export interface Posts {
   [key: string]: any;
 }
 export interface InitialState {
-  posts: Posts[] | [];
+  posts: Post[] | [];
 }
 
 export const getAllPosts = createAsyncThunk("posts/getAllPosts", async () => {
@@ -18,7 +18,7 @@ export const getAllPosts = createAsyncThunk("posts/getAllPosts", async () => {
   return data;
 });
 
-const initialState: { posts: Posts[]; loading: boolean } = {
+const initialState: { posts: Post[]; loading: boolean } = {
   posts: [],
   loading: false,
 };

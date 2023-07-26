@@ -1,17 +1,17 @@
 import { useState } from "react";
 import { Table } from "react-bootstrap";
-import { Posts } from "../../store/postsSlice";
+import { Post } from "../../store/postsSlice";
 import ArrowImg from "../ArrowImg";
 
 import styles from "./MyTable.module.scss";
 
 interface MyTableProps {
-  posts: Posts[];
+  posts: Post[];
   loading: boolean;
 }
 
 const MyTable = ({ posts, loading }: MyTableProps) => {
-  const [sortKey, setSortKey] = useState<keyof Posts | "">("");
+  const [sortKey, setSortKey] = useState<keyof Post | "">("");
   const [isReversed, setIsReversed] = useState<boolean>(false);
 
   if (loading) {

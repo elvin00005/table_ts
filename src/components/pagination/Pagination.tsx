@@ -2,21 +2,21 @@ import { Link } from "react-router-dom";
 import styles from "./Pagination.module.scss";
 
 interface PaginationProps {
-  somethingPerPage: number;
+  postsPerPage: number;
   totalSomething: number;
   setCurrentPage: (n: number | ((prev: number) => number)) => void;
   currentPage: number;
   paginate(n: number): void;
 }
 const Pagination = ({
-  somethingPerPage,
+  postsPerPage,
   totalSomething,
   setCurrentPage,
   currentPage,
   paginate,
 }: PaginationProps) => {
   const pageNumbers = [];
-  for (let i = 1; i <= Math.ceil(totalSomething / somethingPerPage); i++) {
+  for (let i = 1; i <= Math.ceil(totalSomething / postsPerPage); i++) {
     pageNumbers.push(i);
   }
 
@@ -38,6 +38,7 @@ const Pagination = ({
       }
     });
   };
+
   return (
     <div className={styles.container}>
       <button onClick={() => prevPage()}>Назад</button>
@@ -52,7 +53,9 @@ const Pagination = ({
             >
               <div>
                 <Link
-                  to="#"
+                  to={{
+                    search: `page=${number}`,
+                  }}
                   className={currentPage === number ? styles.activeBtn : ""}
                 >
                   {number}

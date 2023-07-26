@@ -1,8 +1,8 @@
-import { Posts } from "../../store/postsSlice";
+import { Post } from "../../store/postsSlice";
 import styles from "./Filter.module.scss";
 
 interface FilterProps {
-  posts: Posts[];
+  posts: Post[];
   onFilter: (_: string) => void;
   searchValue: string;
 }
